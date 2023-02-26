@@ -82,11 +82,12 @@ button:hover{
     background-size: cover;
 }
 
-.projects > div > div, .blogs > div > div {
+.projects > div > a > div, .blogs > div > div {
     width: 300px;
     height: 400px;
     background-repeat: no-repeat;
     background-size: cover;
+    border-radius: 20px;
 }
  
 .project1 {

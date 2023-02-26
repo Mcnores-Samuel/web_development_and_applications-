@@ -1,0 +1,153 @@
+:root {
+    --backgrounds: #07073ba6;;
+}
+html {
+    scroll-behavior: smooth;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #070738;
+    position: relative;
+    font-family:  sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue';
+}
+.about-info {
+    background-image: url(../images/pexels-tima-miroshnichenko-5380642.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.my-info {
+    width: 80%;
+    margin-left: 6rem;
+}
+
+.about, .projects, .blogs, .contacts {
+    width: 100vw;
+    height: 100vh;
+}
+
+.navigation, .about {
+    background-color: var(--backgrounds);
+}
+
+.projects, .blogs, .contacts, .about-info{
+    border-top-left-radius: 30rem;
+    border-bottom-right-radius: 30rem;
+}
+
+.about {
+    color: #ffffff;
+    font-size: 3rem;
+    font-weight: bold;
+    padding: 20px;
+    overflow: auto;
+}
+
+button {
+    padding: 12px;
+    font-size: 2rem;
+    color: #ffffff;
+    border: none;
+    border-radius: 12px;
+    background-color: var(--backgrounds);
+}
+
+button:hover{
+    transition: .4s ease-out;
+    transform: scale(1.2);
+    box-shadow: -3px 3px 3px 5px rgb(55, 120, 122);
+    cursor: pointer;
+}
+/**/
+.projects-sec, .blog-sec, .contact-sec {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+}
+
+.projects-sec {
+    background-color: #423f3f8c;
+}
+.projects {
+    background-image: url(../images/pexels-tima-miroshnichenko-5380792.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.projects > div > div, .blogs > div > div {
+    width: 300px;
+    height: 400px;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+ 
+.project1 {
+    background-image: url(../images/sign-up.png);
+}
+
+.project2 {
+    background-image: url(../images/calculator.png);
+}
+
+.project3 {
+    background-image: url(../images/homepage.png);
+}
+.project4 {
+    background-image: url(../images/game.png);
+}
+.introInfo {
+    text-shadow: none;
+}
+
+.blog-sec {
+    background: radial-gradient(#ffffffbf, #999797bf, #3d0c50bf);
+}
+
+.blog-sec > div {
+    background: linear-gradient(270deg, #000000bf, #999797bf, #3d0c50bf);
+}
+.blogs {
+    background-color: #ad0fc2;
+}
+
+.contacts {
+    background: #1b3f5a;
+    color: white;
+    font-size: 1.3rem;
+    line-height: 1.8rem;
+}
+
+.online {
+    display: grid;
+    grid-template-columns: repeat(4, 100px);
+    grid-template-rows: repeat(3, 50px);
+}
+
+.head {
+    grid-column: 1 / 5;
+    grid-row: 1 / 2;
+}
+.location {
+    margin-top: 12px;
+}
+/* Style all font awesome icons */
+.icon {
+    padding: 20px;
+    width: 50px;
+    text-align: center;
+    text-decoration: none;
+  }
+  
+  /* Add a hover effect if you want */
+  .fa:hover {
+    opacity: 0.7;
+  }
+  

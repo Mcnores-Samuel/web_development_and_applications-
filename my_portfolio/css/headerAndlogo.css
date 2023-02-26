@@ -1,0 +1,58 @@
+.below {
+    background: radial-gradient(circle at 100%, rgb(182, 21, 21), rgb(26, 29, 179) 50%, #eee 75%, #333 75%);
+    padding: 10px;
+    border-radius: 50%;
+}
+
+.logo {
+    width: 100px;
+    background: radial-gradient(circle at 100%, white 3%, blue 40%, rgb(2, 2, 2) 80%);
+    padding: 8px;
+    font-weight: bolder;
+    font-size: x-large;
+    font-stretch: expanded;
+    border-radius: 50%;
+    transition: transform .6s ease-in-out;
+    position: absolute;
+    top: 12px;
+    left: 6rem;
+}
+
+.inlogo {
+    padding: 10px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 100%, white 3%, blue 40%, black 80%);
+}
+
+span {
+    text-shadow: -3px 2px 3px white;
+}
+
+.navigation {
+    padding: 25px;
+    position: sticky;
+    top: -1px;
+}
+.nav-container {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.list {
+    list-style-type: none;
+    padding: 8px 16px;
+    transition: .5s ease-in-out;
+    padding-left: 20px;
+}
+
+.list:hover {
+    transform: scale(1.5);
+    font-size: 1.9rem;
+}
+
+a {
+    text-decoration: none;
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: white;
+}

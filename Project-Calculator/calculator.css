@@ -1,0 +1,89 @@
+body {
+    background-color: rgb(13, 70, 70);
+}
+h1 {
+    text-align: center;
+    color: rgb(223, 201, 238);
+}
+header {
+    font-size: large;
+    font-weight: bolder;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: gold;
+}
+.mainc {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 30px;
+    background-color: rgb(43, 8, 77);
+    width: 330px;
+    border: 5px solid rgb(9, 9, 46);
+    margin: auto;
+    border-radius: 20px;
+    padding-bottom: 5px;
+}
+
+.screen-display {
+    background-color: rgba(223, 217, 217, .80);
+    color: black;
+    border: 10px solid black;
+    font-size: x-large;
+    font-weight: bold;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-around;
+    box-sizing: border-box;
+    width: 310px;
+    height: 100px;
+    padding: 5px;
+    overflow-x: scroll;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+button {
+    text-align: center;
+    width: 70px;
+    padding: 25px;
+    border: none;
+    border-radius: 50%;
+    margin-bottom: 5px;
+    font-size: large;
+    font-weight: bold;
+    transition: 0.5s ease-out;
+    cursor: pointer;
+}
+
+
+button:active {
+    background-color: rgb(42, 48, 46);
+    color: aliceblue;
+    transform: scale(1.4);
+    z-index: 2;
+}
+
+#equal {
+  width: 130px;
+  background-color: rgb(53, 53, 212);
+  color: white;
+  border-radius: 30px;
+  margin-left: 8px;
+  
+}
+
+.clear {
+    color: rgb(209, 12, 12);
+}
+
+.btn-container {
+    border: 1px solid rgb(52, 52, 95);
+    padding: 5px;
+    border-radius: 10px;
+    background-color: rgb(18, 18, 61);
+    margin-top: 3px;
+
+}
+

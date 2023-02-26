@@ -1,0 +1,49 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #16133f;
+}
+
+h1 {
+    text-align: center;
+    color: #f8f8f8;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+img {
+    width: 200px;
+    height: 150px;
+    border-radius: 50%;
+}
+
+ul {
+    list-style-type: none;
+    width: 50%;
+    margin: auto;
+    padding: 10px;
+}
+
+li a {
+    display: block;
+    color: rgb(35, 31, 19);
+    padding: 8px 16px;
+    text-decoration: none;
+    text-align: center;
+    border: 5px solid #16133f;
+    margin: 5px;
+    border-radius: 30px;
+    background-color: #f8f8f8;
+}
+
+li a:hover {
+    background-color: #0b0cf0;
+    color: white;
+    border-radius: 30px;
+}
+
+div {
+    background-image: url(/odin-recipes/images/pexels-pixabay-255501.jpg);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}

@@ -1,0 +1,192 @@
+html {
+    scroll-behavior: smooth;
+}
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: cadetblue;
+    font-family: sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue';
+}
+
+.main-container {
+    width: 100vw;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-auto-rows: minmax(150px auto);
+    position: relative;
+}
+
+.heading {
+    background-color: rgb(202, 196, 200);
+    grid-column: 2 / 6;
+    font-size: 1.5rem;
+    position: sticky;
+    top: -4.4rem;
+}
+
+.heading > div {
+    display: grid;
+    gap: 5px;
+    color: rgb(59, 46, 46);
+}
+.searchbar, .details, .admin, .admininfo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.details, .buttons {
+    margin-left: auto;
+    margin-right: 70px;
+}
+
+.searchbar, .admin {
+    margin-left: 40px;
+}
+
+.details {
+    margin-top: 12px;
+}
+.myname {
+    font-size: 1rem;
+}
+label > input {
+    outline: none;
+    appearance: none;
+    font-size: 70%;
+    width: 35rem;
+    height: 2rem;
+    padding: 10px;
+    border: none;
+    border-radius: 20px;
+    box-shadow: -4px 4px 3px rgba(94, 87, 87, 0.35);
+    margin-left: 50px;
+    background-color: rgb(202, 196, 200);
+}
+
+label > input:focus{
+    border-left: 1px solid #0a9c89;
+    border-bottom: 1px solid #0a9c89;
+    box-shadow: -6px 6px 3px #0a9c89;
+}
+
+
+.searchIcon {
+    position: absolute;
+    top: 16px;
+    left: 3rem;
+    font-size: 2rem;
+}
+
+.buttons > button {
+    appearance: none;
+    border: none;
+    width: 80px;
+    padding: 8px;
+    border-radius: 18px;
+    font-size: 1rem;
+    background-color:#110935bf;
+    color: white;
+    font-weight: bold;
+}
+img {
+    border-radius: 50%;
+}
+
+.left-sidebar{
+    grid-column: 1 / 1;
+    grid-row: 1 / 5;
+    background-color: #110935;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    width: 19vw;
+    height: 100vh;
+    padding-left: 12px;
+    padding-top: 20px;
+    gap: 4rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+}
+
+.activities, .technical {
+    display: grid;
+    gap: 18px;
+}
+
+
+.main {
+    grid-column: 2 / 5;
+    padding: 20px;
+}
+
+.project-container {
+    display: grid;
+    padding: 18px;
+    grid-template-columns: repeat(2, minmax(150px, auto));
+    overflow: auto;
+    gap: 12px;
+    width: 700px;
+}
+
+.projects {
+    height: 300px;
+}
+
+
+.right-sidebar {
+    padding: 20px;
+    margin-right: 10px;
+    width: 300px;
+    position: absolute;
+    right: 12px;
+    top: 120px;
+    z-index: -1;
+}
+.right {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    padding-top: 20px;
+    gap: 12px;
+}
+
+.right-sidebar > div > div {
+    background-color: chartreuse;
+    padding: 30px;
+    border-radius: 15px;
+}
+.right-header {
+    font-weight: bold;
+    font-size: 1.2rem;
+    padding-bottom: 12px;
+}
+
+.special-info {
+    padding-bottom: 10px;
+    border-bottom: 1px solid gray;
+}
+
+.content-holder1, .content-holder2 {
+    display: grid;
+    gap: 12px;
+}
+
+.project-container > div {
+    background-color: rgb(239, 250, 246);
+    padding: 18px;
+    width: 18rem;
+    text-align: center;
+    border-radius: 15px;
+}
+
+.footer {
+    padding: 20px;
+    grid-column: 2 / 6;
+    background-color: blue;
+}
+

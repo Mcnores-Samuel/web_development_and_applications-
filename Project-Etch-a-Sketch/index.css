@@ -1,0 +1,292 @@
+body {
+    background-color: rgb(70, 102, 129);
+    margin: auto
+}
+
+.header, footer {
+    text-align: center;
+    font-weight: bold;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: white;
+}
+
+.header {
+    text-transform: uppercase;
+}
+
+.main-container {
+    display: flex;
+    padding: 20px;
+}
+
+.input-container {
+    border-right: 20px solid rgb(88, 76, 76);
+    color: white;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+    width: 300px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(17, 53, 41);
+}
+
+
+
+label {
+    margin-bottom: 5%;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(42, 100, 83);
+    box-sizing: border-box;
+    padding-top: 8px;
+    width: 100%;
+    gap: 10px;
+    padding-bottom: 10px;
+}
+
+
+button {
+    width: 80%;
+    height: 70px;
+    background-color: cornflowerblue;
+    font-size: larger;
+    font-weight: bold;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    cursor: pointer;
+    text-align: center;
+    border-radius: 15px;
+    box-shadow: 0 5px #999;
+    opacity: 0.5;
+}
+
+button:hover {
+    opacity: 1;
+}
+
+button:active {
+    background-color: rgb(33, 33, 51);
+    color: white;
+    transform: translateY(5px);
+}
+
+.grid-container {
+    width: 70%;
+    height: 750px;
+    border: 10px solid rgb(48, 29, 29);
+    background-color: white;
+
+}
+
+.many {
+    background-color: white;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+.color-prefer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(16, 16, 66);
+    padding-top: 10px;
+    width: 100%;
+    padding-bottom: 15px;
+}
+
+#custom {
+    width: 250px;
+    border: none;
+    height: 50px;
+}
+
+footer {
+    padding-bottom: 10px;
+}
+
+.scale {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    background-color: rgb(45, 68, 61);
+    padding: 8px;
+    width: 95%;
+    height: 100px;
+}
+
+/*This a design for a half the screen on a desktop view*/
+@media (max-width: 1000px) {
+    body {
+        width: 90%;
+        margin: 0;
+    }
+    .main-container{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+
+    }
+
+    .input-container {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .color-prefer {
+        display: grid;
+        grid-template-columns: repeat(2, 3fr);
+        background-color: rgb(16, 16, 66);
+        height: 50px;
+        width: auto;
+        padding: 10px;
+    }
+
+    .buttons {
+        background-color: rgb(42, 100, 83);
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        box-sizing: border-box;
+        padding-top: 8px;
+        width: 100%;
+        padding: 10px;
+        gap: 10px;
+
+    
+    }
+
+    button {
+        height: 40px;
+        width: 100px;
+        font-size: small;
+        margin-bottom: 5px;
+        background-color: cornflowerblue;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        margin-left: 10px;
+        border-radius: 15px;
+        box-shadow: 0 5px #999;
+    }
+
+    button:active {
+        background-color: rgb(33, 33, 51);
+        transform: translateY(5px);
+    }
+
+    .grid-container {
+        width: 100%;
+        height: 100vh;
+        border: 10px solid rgb(48, 29, 29);
+        background-color: white;
+        margin-top: 1px;
+        margin-left: 5px;
+    
+    }
+
+    #custom {
+        width: 300px;
+        border: none;
+    }
+
+    .input-container {
+        border-right: none;
+        color: white;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-weight: bold;
+        margin-left: 5px;
+    }
+    
+
+    .scale {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        align-items: center;
+        background-color: rgb(45, 68, 61);
+        width: 97.5%;
+        height: 30px;
+    }
+
+    #scale {
+        padding: 0;
+        margin-right: 20px;
+    }
+
+    footer {
+        padding: 20px;
+    }
+
+    
+}
+
+@media (max-width: 500px) {
+    .main-container {
+        width: 90%;
+    }
+    .input-container {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    h1, footer {
+        margin-left: 50px;
+    }
+
+    .color-prefer {
+        display: grid;
+        grid-template-columns: repeat(2, 3fr);
+        background-color: rgb(16, 16, 66);
+        height: 50px;
+    }
+
+    #custom {
+        width: 150px;
+        border: none;
+        height: 50px;
+    }
+
+    .buttons {
+        display: grid;
+        height: 100px;
+        grid-template-columns: repeat(1, 1fr);
+        background-color: rgb(42, 100, 83);
+        box-sizing: border-box;
+        width: 100%;
+        padding: 20px;
+        gap: 5px;
+        overflow: scroll;
+    }
+
+    button {
+        height: 50px;
+        font-size: small;
+        margin-bottom: 5px;
+        background-color: cornflowerblue;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        margin-left: 1px;
+        border-radius: 15px;
+        box-shadow: 0 5px #999;
+    }
+
+    .grid-container {
+        height: 400px;
+        border: 10px solid rgb(48, 29, 29);
+        background-color: white;
+        margin-top: 1px;
+    
+    }
+
+    .scale {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        align-items: center;
+        background-color: rgb(45, 68, 61);
+        width: 95%;
+    }
+
+}

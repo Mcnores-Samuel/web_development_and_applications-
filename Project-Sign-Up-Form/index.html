@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/media.css">
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+        <title>sign up form</title>
+    </head>
+    <body>
+        <img src="images/pexels-augustinus-martinus-noppé-12561874.jpg" alt="welcome image and logo logo background" class="logo_background">
+        <div class="logo_container">
+            <img src="images/odin-lined.png" alt="logo"  class="logo">
+            <span class="logo_info">Sign Up</span>
+            <p class="supportInfo">Get in touch with us</p>
+        </div>
+        <div class="form_div">
+            <p class="info">This is not a real online service! You know you need something
+                like this in your life to help you realize your deepest dreams.
+                Sign up <em>now</em> to get started.
+            </p>
+            <p class="info">You <em>know</em> you want to.</p>
+            <p class="info highlight">Let's do this!</p>
+            <form action="" method="post">
+                <fieldset class="input_container">
+                    <label for="first_name">First Name<span class="required">*</span>
+                        <input type="text" id="first_name" name="first_name" required>
+                        <span></span>
+                    </label>
+                    <label for="last_name">Last Name<span class="required">*</span>
+                        <input type="text" id="last_name" name="last_name" required>
+                        <span></span>
+                    </label>
+                    <label for="user_email">Email<span class="required">*</span>
+                        <input type="email" id="user_email" name="email" required>
+                        <span></span>
+                    </label>
+                    <label for="user_tel">Phone Number<span class="required">*</span>
+                        <input type="tel" id="user_tel" name="phone_number" maxlength="13" required>
+                        <span></span>
+                    </label>
+                    <label for="user_password">password<span class="required">*</span>
+                        <input type="password" id="user_password" name="user_password" required>
+                        <span></span>
+                    </label>
+                    <label for="">Confirm password<span class="required">*</span>
+                        <input type="password" id="user_password" name="user_password" minlength="8" maxlength="16" required>
+                        <span></span>
+                    </label>
+                </fieldset>
+                <fieldset class="submit_container">
+                    <input type="submit" value="Create Account" class="submitBtn">
+                    <p>Already have an account? <a href="#" class="login">Login</a></p>
+                    <p><a href="https://github.com/Mcnores-Samuel" class="icon"><i class="fa fa-github fa-3x"></i></a></p>
+                    <p>Copyright&copy;Mcnores Samuel @ The Odin Project</p>
+                </fieldset>
+            </form>
+        </div>
+    </body>
+</html>

@@ -13,9 +13,9 @@
     font-stretch: expanded;
     border-radius: 50%;
     transition: transform .6s ease-in-out;
-    position: absolute;
+    position: fixed;
     top: 12px;
-    left: 6rem;
+    left: 2rem;
 }
 
 .inlogo {
@@ -29,9 +29,10 @@ span {
 }
 
 .navigation {
-    padding: 25px;
+    padding: 25px 25px 10px 25px;
+    width: 100vw;
     position: sticky;
-    top: -1px;
+    top: -1.8rem;
 }
 .nav-container {
     display: flex;

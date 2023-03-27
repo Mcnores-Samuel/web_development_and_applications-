@@ -1,3 +1,28 @@
-@media screen {
+@media (max-width: 800px) {
     
+    .about, button {
+        font-size: 1.5rem;
+        margin-top: 2rem;
+    }
+
+    .projects, .blogs, .contacts, .about-info{
+        border-top-left-radius: 10rem;
+        border-bottom-right-radius: 10rem;
+    }
+
+    .projects-sec {
+        display: grid;
+        padding: 18px;
+        grid-template-columns: repeat(2, minmax(150px, auto));
+        gap: 2rem;
+    }
+
+    .projects {
+        height: auto;
+    }
+
+    .projects > div > a > div {
+        width: 250px;
+        height: 350px;
+    }
 }

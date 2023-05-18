@@ -13,5 +13,24 @@
     <body>
         <button class="addBook">✚</button>
         <div class="main-container"></div>
+        <form action="" method="post" class="form">
+            <button class="cancel" onclick="cancelForm(this)">X</button>
+            <h1>Add a book to the collection</h1>
+            <label for="title">What is the title of the book 
+                <input type="text" name="title" id="title" required>
+            </label> 
+            <label for="author">Who is the author of the book 
+                <input type="text" name="author" id="author" required>
+            </label>
+            <label for="edition">Edition 
+                <input type="text" name="edition" id="edition">
+            </label>
+            <label for="pages">How many pages 
+                <input type="number" id="pages" name="pages"  step=1 required>
+            </label>
+            <label for="submit"> 
+                <input type="submit" name="submit" id="submit" value="Submit">
+            </label>
+        </form>
     </body>
 </html>

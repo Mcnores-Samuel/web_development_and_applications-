@@ -1,6 +1,11 @@
 'use strict';
 
 const container = document.querySelector(".main-container");
+const  title= document.querySelector("#title");
+const author = document.querySelector("#author");
+const edition = document.querySelector("#edition");
+const pages = document.querySelector("#pages");
+const form = document.querySelector(".form");
 /**
  * libraryStorage stores all the book data in objects form, can be updated;
  * displayTableHeadnfo stores the information displayed in table header, not to be updated
@@ -29,39 +34,18 @@ function Book(title, author, edition, totalPages){
  * @param {*} totalPages total number pages of the book
  * @returns an object with the following info of the book: author, title, edition, and pages
  */
-function addBookToLibrary(author, title, edition, totalPages){
-    const book = new Book(author, title, edition, totalPages);
+function addBookToLibrary(title, author, edition, totalPages){
+    const book = new Book(title, author, edition, totalPages);
     return libraryStorage.push(book);
 }
 
-/**
- * This function craete the form to collects the book's data.
- * the form is initially hidden until invoked.
- * @returns Appends the form to the html body and stays hidden.
- */
-const createForm = () =>{
-    const form = document.createElement("form");
-    form.setAttribute("class", "form")
-    form.innerHTML = 
-    `<button class="cancel" onclick="cancelForm(this)">X</button>
-    <h1>Add a book to the collection</h1>
-    <label for="title">What is the title of the book 
-    <input type="text" name="title" id="title" required>
-    </label> 
-    <label for="author">Who is the author of the book 
-    <input type="text" name="author" id="author" required>
-    </label>
-    <label for="edition">Edition 
-    <input type="text" name="edition" id="edition" required>
-    </label>
-    <label for="pages">How many pages 
-    <input type="number" id="pages" name="pages" min="100" step=10 required>
-    </label>
-    <label for="submit"> 
-    <input type="submit" name="submit" id="submit" value="Submit">
-    </label>`
-    form.style.display = "none";
-  return document.body.appendChild(form);
+let collectData = () => {
+    form.addEventListener("submit", (event)=> {
+        event.preventDefault();
+        (edition.value == "") ? edition.value = "Unknown" : edition.value;
+        addBookToLibrary(title.value, author.value, edition.value, parseInt(pages.value));
+        resetForm();
+    })
 }
 
 let createCard = () => {
@@ -82,6 +66,11 @@ let createCard = () => {
     return (card);
 }
 
+let displayBook = () => {
+    const topSector = document.querySelector(".top");
+    container.appendChild(createCard());
+}
+
 
 /**
  * uses css display style to invoke the form in the open for data collection.
@@ -91,11 +80,17 @@ let createCard = () => {
  */
 const invokeForm = () => {
     const btn = document.querySelector("button");
-    const form = document.querySelector(".form");
     btn.addEventListener("click", ()=>{
        form.style.display = "grid";
-       form[0].focus()
-    })
+    });
+}
+
+const resetForm = () => {
+    author.value = "";
+    title.value = "";
+    edition.value = "";
+    pages.value = "";
+    form.style.display = "none";
 }
 
 
@@ -173,17 +168,5 @@ const cancelForm = (o) =>{
 }
 
 /**Invoking the program's function */
-createForm();
 invokeForm();
-
-for (let i = 0; i < 0; i++)
-{
-    container.appendChild(createCard());
-}
-
-const innertop = document.querySelectorAll(".top");
-const middle = document.querySelectorAll(".middle");
-const bottom = document.querySelectorAll(".bottom");
-innertop.forEach(elem => elem.textContent = "I'm the top here");
-middle.forEach(elem => elem.textContent = "I'm the middle guy");
-bottom.forEach(elem => elem.textContent = "Bottom right here");
+collectData();

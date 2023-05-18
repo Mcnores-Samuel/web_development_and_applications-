@@ -74,6 +74,7 @@ h1 {
 }
 
 .form {
+    display: none;
     box-shadow: var(--boxShadow);
     border-radius: 13px;
     font-family: var(--text-font);
@@ -144,10 +145,6 @@ label > input:focus{
 
 input:focus {
     background-color: #56575733;
-}
-
-input:valid {
-    box-shadow: -6px 6px 3px #097a0573;
 }
 
 .addBook {

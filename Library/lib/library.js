@@ -1,10 +1,11 @@
 'use strict';
+
+const container = document.querySelector(".main-container");
 /**
  * libraryStorage stores all the book data in objects form, can be updated;
  * displayTableHeadnfo stores the information displayed in table header, not to be updated
  */
 let libraryStorage = [];
-let displayTableHeadInfo = ["Title", "Author", "Edition", "Pages", "Status", "Delete"];
 
 /**
  * This is the book constructor, a representation of the book data per required
@@ -63,6 +64,24 @@ const createForm = () =>{
   return document.body.appendChild(form);
 }
 
+let createCard = () => {
+    const classname = ["top", "middle", "bottom"];
+    const card = document.createElement("div");
+    const innercard = document.createElement("div");
+
+    for (let i = 0; i < 3; i++) {
+        const innerdiv = document.createElement("div");
+        const inner = document.createElement("div");
+        inner.setAttribute("class", `${classname[i]}`)
+        innerdiv.appendChild(inner);
+        innercard.appendChild(innerdiv);
+    }
+    innercard.setAttribute("class", "innercard");
+    card.appendChild(innercard);
+    card.setAttribute("class", "card");
+    return (card);
+}
+
 
 /**
  * uses css display style to invoke the form in the open for data collection.
@@ -79,67 +98,6 @@ const invokeForm = () => {
     })
 }
 
-/**
- * This creates the table where book data is displayed.
- * The @displayTableHeadInfo stores the table headers and are used here
- * @returns returns a table with one column cotain table headers.
- */
-const createTable = () => {
-    const table = document.createElement("table");
-    const caption = document.createElement("caption")
-    const table_row = document.createElement("tr");
-    caption.textContent = "Library"
-    table.appendChild(caption)
-    /*creating and displaying the table heading*/
-    displayTableHeadInfo.map(element => {
-        const table_head = document.createElement("th");
-        table_head.textContent = element;
-        table_row.appendChild(table_head);
-        table.appendChild(table_row);
-    });
-    return document.body.appendChild(table);
-}
-
-/**
- * This function listens to the submit button and on submit it collects the user entered data.
- * To collect the data for @addBookToLibray function to be added the librayStorage array for further processes.
- * The data is sent to the @addBookToLibray function and then retrieved by the same function to append a table
- * colunm with table data containing the book info from the @libraryStorage array.
- */
-const collectBookDataAndDisplay = () => {
-    const table = document.querySelector("table");
-    const title = document.querySelector("#title");
-    const author = document.querySelector("#author");
-    const edition = document.querySelector("#edition");
-    const pages = document.querySelector("#pages");
-    const submit = document.querySelector("#submit");
-    const form = document.querySelector(".form");
-
-    submit.addEventListener("click", ()=>{
-        if(title.value != "" && author.value != "" && pages.value != ""){
-            addBookToLibrary(title.value, author.value, edition.value, pages.value);
-            let bookData = libraryStorage[libraryStorage.length -1];
-            const row = document.createElement("tr");
-            row.setAttribute("class", "unread");
-            row.innerHTML = `<td class="title">${bookData.title}</td> 
-            <td>${bookData.author}</td> 
-            <td>${bookData.edition}</td> 
-            <td>${bookData.totalPages}</td> 
-            <td><button class="update" onclick="statusUpdate(this)">Not Read</button></td>
-            <td><button class="delete" onclick="deleteData(this)"> 
-            <span class="mdi mdi-delete-forever-outline"></span> 
-            </button></td>`;
-            table.appendChild(row);
-            bookcount();
-            countReadAndUnReadBooks();
-            title.value = "";
-            author.value = "";
-            edition.value = "";
-            pages.value = "";
-            form.style.display = "none";
-        }
-    })
-}
 
 /**
  * This function get the length of the @libraryStorage array to display as total books
@@ -157,7 +115,7 @@ const bookcount = ()=> {
  * the status of the book.
  * @param {*} e html element on which the user's event on interacting with the function.
  */
-const statusUpdate = (e) => {    
+const statusUpdate = (e) => {
     if(e.textContent == "Not Read"){
         e.textContent = "Read"
         e.parentNode.parentNode.style.backgroundColor = "#770505bf"
@@ -216,6 +174,16 @@ const cancelForm = (o) =>{
 
 /**Invoking the program's function */
 createForm();
-createTable();
 invokeForm();
-collectBookDataAndDisplay();
+
+for (let i = 0; i < 0; i++)
+{
+    container.appendChild(createCard());
+}
+
+const innertop = document.querySelectorAll(".top");
+const middle = document.querySelectorAll(".middle");
+const bottom = document.querySelectorAll(".bottom");
+innertop.forEach(elem => elem.textContent = "I'm the top here");
+middle.forEach(elem => elem.textContent = "I'm the middle guy");
+bottom.forEach(elem => elem.textContent = "Bottom right here");

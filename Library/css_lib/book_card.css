@@ -1,0 +1,34 @@
+* {
+    box-sizing: border-box;
+}
+.card {
+    background-color: rgb(194, 179, 179);
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    width: 18rem;
+    height: 23rem;
+    padding: 0;
+}
+
+.innercard {
+    margin: 3px;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+}
+
+.innercard > div {
+    background-image: url("../background.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-y: center;
+    margin: 1px;
+}
+
+.innercard > div > div {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(235, 209, 209, 0.5);
+}
+
+
+

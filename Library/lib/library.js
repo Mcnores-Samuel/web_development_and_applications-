@@ -10,7 +10,7 @@ const form = document.querySelector(".form");
  * libraryStorage stores all the book data in objects form, can be updated;
  * displayTableHeadnfo stores the information displayed in table header, not to be updated
  */
-let libraryStorage = [];
+let libraryStorage = [{title: "The love We Only Share", author: "Samuel M Nkhoma", edition: "first edition", totalPages: 234}];
 
 /**
  * This is the book constructor, a representation of the book data per required
@@ -19,7 +19,8 @@ let libraryStorage = [];
  * @param {*} edition  - edition type string
  * @param {*} totalPages - total number of pages of the book
  */
-function Book(title, author, edition, totalPages){
+function Book(title, author, edition, totalPages)
+{
     this.title = title;
     this.author = author;
     this.edition = edition;
@@ -43,32 +44,53 @@ let collectData = () => {
     form.addEventListener("submit", (event)=> {
         event.preventDefault();
         (edition.value == "") ? edition.value = "Unknown" : edition.value;
-        addBookToLibrary(title.value, author.value, edition.value, parseInt(pages.value));
+        addBookToLibrary(title.value, author.value, edition.value, pages.value);
+        console.log(libraryStorage);
+        container.appendChild(createCard());
         resetForm();
     })
 }
 
+let displayInfo = () => {
+    const title_text = document.createElement("div");
+    const author_text = document.createElement("div");
+    const edition_text = document.createElement("div");
+    const pages_text = document.createElement("div");
+    const status = document.createElement("button");
+    const del = document.createElement("button");
+
+    for (let i = 0; i < libraryStorage.length; i++)
+    {
+        if (i == libraryStorage.length - 1)
+        {
+            title_text.textContent = `Title: ${libraryStorage[i].title}`;
+            author_text.textContent = `Author: ${libraryStorage[i].author}`;
+            edition_text.textContent = `Edition: ${libraryStorage[i].edition}`;
+            pages_text.textContent = `Pages: ${libraryStorage[i].totalPages}`;
+        }
+    }
+    status.setAttribute("onclick", "statusUpdate(this)")
+    status.textContent = "Not Read";
+    del.setAttribute("onclick", "deleteData(this)")
+    del.textContent = "Delete";
+    return {title_text, author_text, edition_text, pages_text, status, del};
+}
+
 let createCard = () => {
-    const classname = ["top", "middle", "bottom"];
     const card = document.createElement("div");
     const innercard = document.createElement("div");
+    innercard.setAttribute("class", "innercard")
 
-    for (let i = 0; i < 3; i++) {
-        const innerdiv = document.createElement("div");
-        const inner = document.createElement("div");
-        inner.setAttribute("class", `${classname[i]}`)
-        innerdiv.appendChild(inner);
-        innercard.appendChild(innerdiv);
-    }
-    innercard.setAttribute("class", "innercard");
+    innercard.appendChild(displayInfo().title_text);
+    innercard.appendChild(displayInfo().author_text);
+    innercard.appendChild(displayInfo().edition_text);
+    innercard.appendChild(displayInfo().pages_text);
+    innercard.appendChild(displayInfo().status);
+    innercard.appendChild(displayInfo().del);
+
     card.appendChild(innercard);
     card.setAttribute("class", "card");
     return (card);
-}
-
-let displayBook = () => {
-    const topSector = document.querySelector(".top");
-    container.appendChild(createCard());
 }
 
 
@@ -111,17 +133,18 @@ const bookcount = ()=> {
  * @param {*} e html element on which the user's event on interacting with the function.
  */
 const statusUpdate = (e) => {
-    if(e.textContent == "Not Read"){
-        e.textContent = "Read"
-        e.parentNode.parentNode.style.backgroundColor = "#770505bf"
-        e.parentNode.parentNode.setAttribute("class", "read");
-        countReadAndUnReadBooks();
+    if(e.textContent == "Not Read")
+    {
+        e.textContent = "Read";
+        e.parentNode.parentNode.setAttribute("class", "card read");
+        e.parentNode.style.backgroundColor = "#5b03038c";
+
     }
-    else{
+    else
+    {
+        e.parentNode.parentNode.setAttribute("class", "card not_read");
+        e.parentNode.style.backgroundColor = "#0000008c"
         e.textContent = "Not Read";
-        e.parentNode.parentNode.style.backgroundColor = "#020222bf";
-        e.parentNode.parentNode.setAttribute("class", "unread");
-        countReadAndUnReadBooks();
     }
 }
 
@@ -146,17 +169,17 @@ const countReadAndUnReadBooks = () => {
  * @param {*} e html element on  which the event carried out by the user.
  */
 const deleteData = (e) => {
-    const child = e.parentNode.parentNode;
-    let parent = child.parentNode;
-    let childText = child.firstChild.textContent;
-    for(let i = 0; i < libraryStorage.length; i++){
+    const card = e.parentNode.parentNode;
+    /*let parent = child.parentNode;
+    let childText = child.firstChild.textContent;*/
+    console.log(card.firstChild);
+    /*for(let i = 0; i < libraryStorage.length; i++){
         if(libraryStorage[i].title == childText){
             libraryStorage.splice(i, 1);
             bookcount();
             parent.removeChild(child);
-            countReadAndUnReadBooks();
         }
-    }
+    }*/
 }
 
 /**This cancels the form if the user wishes to abort entering details. 
@@ -170,3 +193,4 @@ const cancelForm = (o) =>{
 /**Invoking the program's function */
 invokeForm();
 collectData();
+container.appendChild(createCard());

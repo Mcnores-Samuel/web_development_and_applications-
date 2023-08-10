@@ -1,7 +1,7 @@
 'use strict';
 
 const container = document.querySelector(".main-container");
-const  title= document.querySelector("#title");
+const title = document.querySelector("#title");
 const author = document.querySelector("#author");
 const edition = document.querySelector("#edition");
 const pages = document.querySelector("#pages");
@@ -10,7 +10,12 @@ const form = document.querySelector(".form");
  * libraryStorage stores all the book data in objects form, can be updated;
  * displayTableHeadnfo stores the information displayed in table header, not to be updated
  */
-let libraryStorage = [{title: "The love We Only Share", author: "Samuel M Nkhoma", edition: "first edition", totalPages: 234}];
+let libraryStorage = [
+    { title: "Algorithmic Thinking A Problem-Based Introduction", author: "Daniel Zingaro", edition: "unknown", totalPages: 365},
+    { title: "Think Like a Programmer An Introduction to Creative Problem Solving", author: "V. Anton Spraul", edition: "unknown", totalPages: 247 },
+    { title: "The love We Only Share", author: "Samuel M Nkhoma", edition: "first edition", totalPages: 234 },
+    { title: "The love We Only Share", author: "Samuel M Nkhoma", edition: "first edition", totalPages: 234 }
+];
 
 /**
  * This is the book constructor, a representation of the book data per required
@@ -19,8 +24,7 @@ let libraryStorage = [{title: "The love We Only Share", author: "Samuel M Nkhoma
  * @param {*} edition  - edition type string
  * @param {*} totalPages - total number of pages of the book
  */
-function Book(title, author, edition, totalPages)
-{
+function Book(title, author, edition, totalPages) {
     this.title = title;
     this.author = author;
     this.edition = edition;
@@ -35,63 +39,83 @@ function Book(title, author, edition, totalPages)
  * @param {*} totalPages total number pages of the book
  * @returns an object with the following info of the book: author, title, edition, and pages
  */
-function addBookToLibrary(title, author, edition, totalPages){
+function addBookToLibrary(title, author, edition, totalPages) {
     const book = new Book(title, author, edition, totalPages);
     return libraryStorage.push(book);
 }
 
 let collectData = () => {
-    form.addEventListener("submit", (event)=> {
+    form.addEventListener("submit", (event) => {
         event.preventDefault();
         (edition.value == "") ? edition.value = "Unknown" : edition.value;
         addBookToLibrary(title.value, author.value, edition.value, pages.value);
-        console.log(libraryStorage);
-        container.appendChild(createCard());
+        createCard();
         resetForm();
     })
 }
 
-let displayInfo = () => {
-    const title_text = document.createElement("div");
-    const author_text = document.createElement("div");
-    const edition_text = document.createElement("div");
-    const pages_text = document.createElement("div");
-    const status = document.createElement("button");
-    const del = document.createElement("button");
-
-    for (let i = 0; i < libraryStorage.length; i++)
-    {
-        if (i == libraryStorage.length - 1)
-        {
-            title_text.textContent = `Title: ${libraryStorage[i].title}`;
-            author_text.textContent = `Author: ${libraryStorage[i].author}`;
-            edition_text.textContent = `Edition: ${libraryStorage[i].edition}`;
-            pages_text.textContent = `Pages: ${libraryStorage[i].totalPages}`;
-        }
+/**
+ * This deletes Data from the LibraryStorage array and deletes the column the particular data was displayed.
+ * this function assumes there will be not more than 2 books with the same name as the may cause the function 
+ * to misinterprete the user's action and users may want to add books with different names as the function
+ * uses the book name to locate it in the libraryStorage.
+ * @param {*} e html element on  which the event carried out by the user.
+ */
+const deleteData = (e) => {
+    const card = e.parentNode.parentNode;
+    let parent = card.parentNode;
+    let child = card.firstChild.firstChild.childNodes[1];
+    for (let i = 0; i < libraryStorage.length; i++) {
+      if (child.textContent == libraryStorage[i].title) {
+        libraryStorage.splice(i, 1);
+        parent.removeChild(card);
+        break;
+      }
     }
-    status.setAttribute("onclick", "statusUpdate(this)")
-    status.textContent = "Not Read";
-    del.setAttribute("onclick", "deleteData(this)")
-    del.textContent = "Delete";
-    return {title_text, author_text, edition_text, pages_text, status, del};
-}
+  };
 
 let createCard = () => {
-    const card = document.createElement("div");
-    const innercard = document.createElement("div");
-    innercard.setAttribute("class", "innercard")
-
-    innercard.appendChild(displayInfo().title_text);
-    innercard.appendChild(displayInfo().author_text);
-    innercard.appendChild(displayInfo().edition_text);
-    innercard.appendChild(displayInfo().pages_text);
-    innercard.appendChild(displayInfo().status);
-    innercard.appendChild(displayInfo().del);
-
-    card.appendChild(innercard);
-    card.setAttribute("class", "card");
-    return (card);
-}
+    container.innerHTML = '';
+  
+    libraryStorage.forEach((book) => {
+      const card = document.createElement("div");
+      const innercard = document.createElement("div");
+      innercard.setAttribute("class", "innercard");
+  
+      const title_text = document.createElement("div");
+      title_text.innerHTML = `<div class="keywords">Title</div>${book.title}`;
+      innercard.appendChild(title_text);
+  
+      const author_text = document.createElement("div");
+      author_text.innerHTML = `<div class="keywords">Author</div>${book.author}`;
+      innercard.appendChild(author_text);
+  
+      const edition_text = document.createElement("div");
+      edition_text.innerHTML = `<div class="keywords">Edition</div>${book.edition}`;
+      innercard.appendChild(edition_text);
+  
+      const pages_text = document.createElement("div");
+      pages_text.innerHTML = `<div class="keywords">Pages</div>${book.totalPages}`;
+      innercard.appendChild(pages_text);
+  
+      const status = document.createElement("button");
+      status.setAttribute("onclick", "statusUpdate(this)");
+      status.textContent = "Not Read";
+      status.setAttribute("class", "status");
+      innercard.appendChild(status);
+  
+      const del = document.createElement("button");
+      del.setAttribute("onclick", "deleteData(this)");
+      del.setAttribute("class", "delete");
+      del.textContent = "Delete";
+      innercard.appendChild(del);
+  
+      card.appendChild(innercard);
+      card.setAttribute("class", "card");
+      container.appendChild(card);
+    });
+  };
+  
 
 
 /**
@@ -102,8 +126,8 @@ let createCard = () => {
  */
 const invokeForm = () => {
     const btn = document.querySelector("button");
-    btn.addEventListener("click", ()=>{
-       form.style.display = "grid";
+    btn.addEventListener("click", () => {
+        form.style.display = "grid";
     });
 }
 
@@ -120,7 +144,7 @@ const resetForm = () => {
  * This function get the length of the @libraryStorage array to display as total books
  * The total length of the array is equivalent to the book's total count.
  */
-const bookcount = ()=> {
+const bookcount = () => {
     const logs = document.querySelector(".book-count");
     logs.textContent = libraryStorage.length;
 }
@@ -133,15 +157,13 @@ const bookcount = ()=> {
  * @param {*} e html element on which the user's event on interacting with the function.
  */
 const statusUpdate = (e) => {
-    if(e.textContent == "Not Read")
-    {
+    if (e.textContent == "Not Read") {
         e.textContent = "Read";
         e.parentNode.parentNode.setAttribute("class", "card read");
         e.parentNode.style.backgroundColor = "#5b03038c";
 
     }
-    else
-    {
+    else {
         e.parentNode.parentNode.setAttribute("class", "card not_read");
         e.parentNode.style.backgroundColor = "#0000008c"
         e.textContent = "Not Read";
@@ -161,31 +183,11 @@ const countReadAndUnReadBooks = () => {
     not_read_count.textContent = unread.length;
 }
 
-/**
- * This deletes Data from the LibraryStorage array and deletes the column the particular data was displayed.
- * this function assumes there will be not more than 2 books with the same name as the may cause the function 
- * to misinterprete the user's action and users may want to add books with different names as the function
- * uses the book name to locate it in the libraryStorage.
- * @param {*} e html element on  which the event carried out by the user.
- */
-const deleteData = (e) => {
-    const card = e.parentNode.parentNode;
-    /*let parent = child.parentNode;
-    let childText = child.firstChild.textContent;*/
-    console.log(card.firstChild);
-    /*for(let i = 0; i < libraryStorage.length; i++){
-        if(libraryStorage[i].title == childText){
-            libraryStorage.splice(i, 1);
-            bookcount();
-            parent.removeChild(child);
-        }
-    }*/
-}
 
 /**This cancels the form if the user wishes to abort entering details. 
  * this set the form hidden from the screen.
 */
-const cancelForm = (o) =>{
+const cancelForm = (o) => {
     let cancel = o.parentNode
     cancel.style.display = "none"
 }
@@ -193,4 +195,4 @@ const cancelForm = (o) =>{
 /**Invoking the program's function */
 invokeForm();
 collectData();
-container.appendChild(createCard());
+createCard();

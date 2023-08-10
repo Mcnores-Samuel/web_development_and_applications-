@@ -7,14 +7,18 @@
     padding: 12px;
 }
 .card {
+    position: relative;
     background-image: url("../background.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position-y: center;
     border-radius: 15px;
     width: 18rem;
-    height: 23rem;
-    color: white;
+    height: 25rem;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    font-weight: bolder;
+    text-transform: capitalize;
 }
 
 .innercard {
@@ -22,12 +26,39 @@
     height: 100%;
     background-color: rgba(0, 0, 0, 0.55);
     border-radius: 15px;
-    padding: 12px;
+    padding: 15px;
 }
 
 .innercard > div {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
+    line-height: 1.2;
+    
 }
 
+button {
+    padding: 8px;
+    font-weight: bolder;
+    font-size: 1.2rem;
+    border-radius: 15px;
+    border: none;
+    background-color: blueviolet;
+}
 
+.delete {
+    position: absolute;
+    top: 21rem;
+    right: 3rem;
+    padding: 8px 15px 8px 15px;
+}
 
+.status {
+    position: absolute;
+    left: 3rem;
+    top: 21rem;
+}
+
+.keywords {
+    font-size: 2rem;
+    text-decoration: underline rgb(0, 0, 255);
+}
+  
